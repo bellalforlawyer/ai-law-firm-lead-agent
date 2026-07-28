@@ -1,0 +1,276 @@
+{
+  "name": "Follow UP RajaLawFirm",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d524c58e-981e-4dbc-b40c-2da9ad6202e1",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0",
+          "mode": "list",
+          "cachedResultName": "Law Firm Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f5a5d92d-47cd-460f-b310-332721abe24f",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "0mYlmgopmknspeMH",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Stage }}",
+                    "rightValue": "Inquiry Only",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "363c31f7-60a5-4985-ae43-fab28fe8c3dc"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "bf44e01e-1246-4908-8cd5-e828d3378339",
+                    "leftValue": "={{ $json.Stage }}",
+                    "rightValue": "Details Collected",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "cd5262be-3bef-4de1-9f43-a27c17da833d",
+                    "leftValue": "={{ $json.Stage }}",
+                    "rightValue": "Consultation Booked",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "3b37791d-336d-44fd-94c5-9261e0568ebd",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Get row(s) in sheet').item.json['Row ID'] }}",
+        "text": "=Assalam-o-Alaikum {{ $json.Naam || '' }}! Humne dekha aapne apna masla share kiya tha lekin baaki details nahi mil sakin. Kya aap chahenge ke hum aapki madad continue karein? Bas apna naam aur city bata dein, hum aapko sahi guidance denge.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        -160
+      ],
+      "id": "d1453766-6a7f-46ac-bbc5-0f0820802fdb",
+      "name": "Send a text message",
+      "webhookId": "dc93bf40-3fea-48fe-bcac-e2887072a41b",
+      "credentials": {
+        "telegramApi": {
+          "id": "CMPtSKVhJC5Gm9v9",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json['Row ID'] }}",
+        "text": "=Assalam-o-Alaikum {{ $json.Naam }}! Umeed hai aap theek honge. Humne aapki details receive kar li thin — kya aap consultation book karna chahenge? Raja Naveed Azam Sahab aapke case ko dekh kar sahi rasta bata sakte hain, sirf Rs. 3000 mein.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        640,
+        32
+      ],
+      "id": "095126e5-dfe1-41b3-93d1-54b899df4919",
+      "name": "Send a text message1",
+      "webhookId": "36a4266a-9f5f-477b-b7cb-cf9fb03739ed",
+      "credentials": {
+        "telegramApi": {
+          "id": "CMPtSKVhJC5Gm9v9",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Get row(s) in sheet').item.json['Row ID'] }}",
+        "text": "=Assalam-o-Alaikum {{ $json.Naam }}! Aapki consultation book ho chuki hai, lekin humein abhi tak payment receive nahi hui. Kya aap payment mein kisi masle ka samna kar rahe hain? Ye rahe bank details dobara: Meezan Bank, Account: 05200110340448, IBAN: PK55MEZN0005200110340448.",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        224
+      ],
+      "id": "3b043f5e-b886-4d04-8143-86f37ea4651a",
+      "name": "Send a text message2",
+      "webhookId": "9fb112e0-f703-48e3-8d5e-25070dcdf4f5",
+      "credentials": {
+        "telegramApi": {
+          "id": "CMPtSKVhJC5Gm9v9",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "4401121d-e24f-4d07-9dc9-64335c2c11ef",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cecc21b4afde163c306314c82883b221c1a01ccb3593abc9d7425573b4018eb0"
+  },
+  "nodeGroups": [],
+  "id": "BJMa5phzgJ80Fuji",
+  "tags": []
+}
