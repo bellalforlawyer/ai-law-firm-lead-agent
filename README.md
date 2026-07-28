@@ -18,3 +18,38 @@ A conversational AI agent that:
 ## Architecture
 
 **Main Conversational Workflow:**
+Telegram/WhatsApp Trigger → IF (text message check) → AI Agent (Gemini + Memory + Google Sheets Tool) → Send Reply
+
+
+**Follow-Up Workflow (runs on a schedule):**
+
+Schedule Trigger → Google Sheets (Read All Leads) → Switch (by Stage) →
+Stage-specific reminder messages sent via Telegram/WhatsApp
+
+
+## Tech Stack
+- n8n (workflow automation)
+- Google Gemini AI (via AI Agent node)
+- n8n Simple Memory (conversation context per user)
+- Google Sheets (lead database + stage tracking)
+- Telegram Bot API (primary channel for development/testing)
+- WhatsApp Business Cloud API (Meta) — implemented, pending account verification
+
+## Key Features
+- **Natural, sequential questioning** — one question per message, never a form-style dump
+- **Location-aware consultation routing** (in-person vs online)
+- **Stage-based lead tracking** for full funnel visibility
+- **Automated payment reminders** for stuck leads
+- **Manual payment verification** — the AI never marks a payment as verified; it only flags "customer claims paid," leaving final confirmation to the business owner (fraud-prevention by design)
+- **Multi-language support** — responds in Urdu script, Roman Urdu, or English depending on how the client writes
+
+## Known Limitations / Notes
+- WhatsApp Business Cloud API integration was fully built and tested, but delivery was blocked mid-testing by a Meta-side "Business Account locked" error (code 131031) — a Meta account review issue, not a workflow/technical error.
+- Image/voice messages are not yet processed (text-only for now); the bot responds with a polite fallback if a non-text message is received.
+- Currently business-owner has no dedicated inbox to view/reply to conversations directly — a future iteration will add Chatwoot (self-hosted) as a proper shared inbox layer.
+
+## Future Improvements
+- Chatwoot integration for a full business-owner-facing inbox
+- Voice note transcription (Speech-to-Text) support
+- Payment screenshot analysis (image understanding)
+- Migration to a paid, dedicated WhatsApp BSP (e.g. 360dialog) for production reliability
