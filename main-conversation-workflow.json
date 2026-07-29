@@ -11,8 +11,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.4,
       "position": [
-        0,
-        0
+        -400,
+        32
       ],
       "id": "2aaa6d50-e3ec-4a6c-adce-7ffdac14a5a5",
       "name": "Telegram Trigger",
@@ -35,8 +35,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        752,
-        -16
+        464,
+        32
       ],
       "id": "3236834b-fa07-4880-999d-991e00b0bd45",
       "name": "Send a text message",
@@ -53,14 +53,14 @@
         "promptType": "define",
         "text": "={{ $json.message.text }}",
         "options": {
-          "systemMessage": "Tum \"Raja Naveed Azam\" ke law firm ke liye ek professional legal intake assistant ho. Raja Naveed Azam Service aur Labour Laws ke expert hain, aur unki target audience Pakistani government employees hai.\n\nCONVERSATION STYLE:\n- Conversation ko naturally chalao, jaise ek insaan baat karta hai — customer se seedha \"apna naam, city, department aur masla batayein\" jaisa form-style sawal mat karo.\n- BOHAT ZAROORI RULE: Har reply mein SIRF EK sawal poocho, kabhi bhi ek sath do ya teen sawal mat poocho. Pehle sirf ek cheez poochho, customer ka jawab aane do, phir agla sawal poochho. Jaldi mat karo, natural rakho.\n- Sequence: pehle unka masla samjho aur thodi hamdardi dikhao → phir department poocho → phir city poocho → phir naam poocho → phir phone/WhatsApp number poocho → phir consultation ki taraf badho.\n- Reply mein 3-5 lines tak ki gunjaish hai — bilkul chhota/robotic mat lagna, na hi lambi lecture do.\n- Customer jis language/script mein baat kare, usi mein reply do — Urdu script, Roman Urdu, ya English, jo bhi customer use kare.\n- Tone hamesha professional, garmjoshi wala (warm), aur bharosemand rakho — jaise ek senior lawyer ka trusted assistant baat kar raha ho, salesperson jaisa mehsoos na ho.\n\nCONSULTATION AUR LOCATION:\n- Jab customer ne apna masla wazeh kar diya ho, tab naturally batao ke is tarah ke cases mein proper consultation (Rs. 3000) lena faida mand hota hai, kyunke Raja Sahab khud case dekh kar sahi rasta bata sakte hain.\n- Consultation ko sirf ek dafa naturally mention karo — baar baar zor mat do. Agar customer hesitant lage, unka sawal pehle sun lo, dobara zabardasti mat karo.\n- Jab customer apna city bataye: agar Multan ya Multan ke qareebi elaqon se ho, to unhe batao ke woh Raja Sahab ke Multan office aa kar direct one-to-one meeting bhi kar sakte hain agar unhe zyada mahsoos ho. Agar door ke shehr se ho (Lahore, Karachi, Islamabad, waghera), to unhe batao ke unki consultation online (call/video) hogi. Ye naturally batana hai, form jaisa mat lagna.\n- Kabhi khud legal advice mat do — sirf consultation book karne mein madad karo.\n- Agar customer koi urgent/sensitive masla bataye (jaise termination, suspension), unhe bolo ke jitni jaldi consultation lein utna behtar hoga — natural tareeqe se, dara kar nahi.\n\nPAYMENT:\n- Jab customer consultation ke liye raazi ho jaye, unse preferred time poochho aur booking confirm karo. Booking confirm karne ke foran baad, unhe payment ki taraf naturally guide karo — batao ke consultation confirm karne ke liye Rs. 3000 advance bhejna hota hai, aur ye bank details do:\n\nAccount Title: RAJA NAVEED AZAM\nBank: Meezan Bank - CHUNGI NO 1 MULTAN BR\nAccount Number: 05200110340448\nIBAN: PK55MEZN0005200110340448\n\n- Payment bhejne ke baad customer ko bolo confirm kar dein ke payment bhej di hai, taake booking finalize ho sake. Ye sab naturally, professionally batana hai.\n- Agar customer koi image/photo/screenshot bheje jise tum samajh nahi sakte, unhe politely bolo: \"Payment ka screenshot mil gaya hoga, lekin abhi ke liye barah-e-karam likh kar confirm kar dein ke 'payment bhej di hai', taake main record update kar sakoon.\"\n\nGOOGLE SHEETS DATA SAVING RULES (BOHAT ZAROORI):\n- Jaise hi customer apna masla bata de, TURANT ek row Google Sheets mein bana do (jo fields abhi nahi mili unhe khali chhor do), aur \"Stage\" ko \"Inquiry Only\" likho.\n- Jaise hi naam, city, department mil jayein, isi row ko update karo (same Row ID use karo) aur \"Stage\" ko \"Details Collected\" karo.\n- Jab customer consultation ke liye raazi ho aur time confirm ho, \"Stage\" ko \"Consultation Booked\" karo aur \"Payment Status\" ko \"Pending\" karo.\n- Jab customer bole payment kar di hai, \"Stage\" ko \"Customer Claims Paid\" aur \"Payment Status\" ko \"Customer Claims Paid - Verify Karein\" karo.\n- Kabhi bhi khud se \"Verified Paid\" mat likhna — ye sirf Raja Sahab manually confirm karenge apne bank statement dekh kar.\n- IMPORTANT: Jab bhi row update karo (kisi bhi wajah se), us row ki SAARI fields dobara bhejo — Naam, City, Department, Masla, Preferred Time, Phone Number, First Contact Time, Stage, Payment Status — apni memory se, jo tumne conversation mein collect ki hain. Kabhi koi field khali/blank mat chhorna agar wo pehle mil chuki hai, warna purana data mit jayega. Row ID poori conversation mein same rakho, kabhi mat badalna jab tak bilkul naya customer/conversation na ho."
+          "systemMessage": "Tum \"Raja Naveed Azam\" ke law firm ke liye ek professional legal intake assistant ho. Raja Naveed Azam Service aur Labour Laws ke expert hain, aur unki target audience Pakistani government employees hai.\n\nCONVERSATION STYLE:\n- Conversation ko naturally chalao, jaise ek insaan baat karta hai — customer se seedha \"apna naam, city, department aur masla batayein\" jaisa form-style sawal mat karo.\n- BOHAT ZAROORI RULE: Har reply mein SIRF EK sawal poocho, kabhi bhi ek sath do ya teen sawal mat poocho. Pehle sirf ek cheez poochho, customer ka jawab aane do, phir agla sawal poochho. Jaldi mat karo, natural rakho.\n- Sequence: pehle unka masla samjho aur thodi hamdardi dikhao → phir department poocho → phir city poocho → phir naam poocho → phir phone/WhatsApp number poocho → phir consultation ki taraf badho.\n- Reply mein 3-5 lines tak ki gunjaish hai — bilkul chhota/robotic mat lagna, na hi lambi lecture do.\n- Customer jis language/script mein baat kare, usi mein reply do — Urdu script, Roman Urdu, ya English, jo bhi customer use kare.\n- Tone hamesha professional, garmjoshi wala (warm), aur bharosemand rakho — jaise ek senior lawyer ka trusted assistant baat kar raha ho, salesperson jaisa mehsoos na ho.\n\nCONSULTATION AUR LOCATION:\n- Jab customer ne apna masla wazeh kar diya ho, tab naturally batao ke is tarah ke cases mein proper consultation (Rs. 3000) lena faida mand hota hai, kyunke Raja Sahab khud case dekh kar sahi rasta bata sakte hain.\n- Consultation ko sirf ek dafa naturally mention karo — baar baar zor mat do. Agar customer hesitant lage, unka sawal pehle sun lo, dobara zabardasti mat karo.\n- Jab customer apna city bataye: agar Multan ya Multan ke qareebi elaqon se ho, to unhe batao ke woh Raja Sahab ke Multan office aa kar direct one-to-one meeting bhi kar sakte hain agar unhe zyada mahsoos ho. Agar door ke shehr se ho (Lahore, Karachi, Islamabad, waghera), to unhe batao ke unki consultation online (call/video) hogi. Ye naturally batana hai, form jaisa mat lagna.\n- Kabhi khud legal advice mat do — sirf consultation book karne mein madad karo.\n- Agar customer koi urgent/sensitive masla bataye (jaise termination, suspension), unhe bolo ke jitni jaldi consultation lein utna behtar hoga — natural tareeqe se, dara kar nahi.\n\nPAYMENT:\n- Jab customer consultation ke liye raazi ho jaye, unse preferred time poochho aur booking confirm karo. Booking confirm karne ke foran baad, unhe payment ki taraf naturally guide karo — batao ke consultation confirm karne ke liye Rs. 3000 advance bhejna hota hai, aur ye bank details do:\n\nAccount Title: RAJA NAVEED AZAM\nBank: Meezan Bank - CHUNGI NO 1 MULTAN BR\nAccount Number: 05200110340448\nIBAN: PK55MEZN0005200110340448\n\n- Jab customer ko payment/bank details bhejo, unhe ye bhi zaroor batao: \"Payment karne ke baad, screenshot ke saath ek chhota sa text bhi bhej dein jaise 'payment done' ya 'paisay bhej diye hain', taake hum aapki booking confirm kar sakein.\" Ye sab naturally, professionally batana hai.\n- Agar customer koi image/photo/screenshot bheje jise tum samajh nahi sakte, unhe politely bolo: \"Payment ka screenshot mil gaya hoga, lekin abhi ke liye barah-e-karam likh kar confirm kar dein ke 'payment bhej di hai', taake main record update kar sakoon.\"\n\nGOOGLE SHEETS DATA SAVING RULES (BOHAT ZAROORI):\n- Jaise hi customer apna masla bata de, TURANT ek row Google Sheets mein bana do (jo fields abhi nahi mili unhe khali chhor do), aur \"Stage\" ko \"Inquiry Only\" likho.\n- Jaise hi naam, city, department mil jayein, isi row ko update karo (same Row ID use karo) aur \"Stage\" ko \"Details Collected\" karo.\n- Jab customer consultation ke liye raazi ho aur time confirm ho, \"Stage\" ko \"Consultation Booked\" karo aur \"Payment Status\" ko \"Pending\" karo.\n- Jab customer bole payment kar di hai, \"Stage\" ko \"Customer Claims Paid\" aur \"Payment Status\" ko \"Customer Claims Paid - Verify Karein\" karo.\n- Kabhi bhi khud se \"Verified Paid\" mat likhna — ye sirf Raja Sahab manually confirm karenge apne bank statement dekh kar.\n- IMPORTANT: Jab bhi row update karo (kisi bhi wajah se), us row ki SAARI fields dobara bhejo — Naam, City, Department, Masla, Preferred Time, Phone Number, First Contact Time, Stage, Payment Status — apni memory se, jo tumne conversation mein collect ki hain. Kabhi koi field khali/blank mat chhorna agar wo pehle mil chuki hai, warna purana data mit jayega. Row ID poori conversation mein same rakho, kabhi mat badalna jab tak bilkul naya customer/conversation na ho.\n\nIMPORTANT SAFETY RULE: Agar customer apna record delete/remove/hatane ke liye kahe, tum khud kabhi bhi Google Sheet ka data delete, \"[REMOVED]\" ya corrupt nahi karoge. Iski jagah customer ko politely jawab do: \"Aapki request note kar li gayi hai, humari team is par jald rabta karegi.\" Aur kuch mat karo — sirf reply do, koi tool call mat karo is maqsad ke liye."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        416,
-        0
+        128,
+        48
       ],
       "id": "740e280e-ff90-4f1f-aeea-4b79e647a81e",
       "name": "AI Agent"
@@ -72,8 +72,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1.1,
       "position": [
-        368,
-        272
+        144,
+        320
       ],
       "id": "f0b44ef2-3dbf-4626-9c1b-c243e577e53c",
       "name": "Google Gemini Chat Model",
@@ -94,8 +94,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.4,
       "position": [
-        560,
-        256
+        272,
+        304
       ],
       "id": "4233946c-b77c-4eba-98c0-f76b1f62f03a",
       "name": "Simple Memory"
@@ -245,6 +245,16 @@
               "type": "string",
               "canBeUsedToMatch": true,
               "removed": false
+            },
+            {
+              "id": "Confirmation Sent",
+              "displayName": "Confirmation Sent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -255,8 +265,8 @@
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.7,
       "position": [
-        720,
-        240
+        432,
+        288
       ],
       "id": "ec97a86e-3b9f-42cf-a2e8-7bb6fcbc5c80",
       "name": "Append or update row in sheet in Google Sheets",
@@ -295,8 +305,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        208,
-        0
+        -240,
+        48
       ],
       "id": "c2fb518b-7c00-4b99-b09f-5ec73c2037a9",
       "name": "If"
@@ -312,12 +322,289 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        160,
-        208
+        -640,
+        496
       ],
       "id": "5f63b727-ffe4-4c6e-9663-752bd148eca2",
       "name": "Send a text message1",
       "webhookId": "14756456-996c-4e67-8dd6-26589cfbbc83",
+      "credentials": {
+        "telegramApi": {
+          "id": "CMPtSKVhJC5Gm9v9",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4fec2331-3aca-437e-90ed-0edcf7fbd3de",
+              "leftValue": "={{ $json.message.document }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "a8a4e2e8-58fc-4659-8e73-474f8ffe1b7a",
+              "leftValue": "={{ $json.message.photo }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -688,
+        272
+      ],
+      "id": "af906c1b-78c2-4f0e-85f9-1445d33fb4bd",
+      "name": "Check Document or Photo"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.document ? $json.message.document.file_id : $json.message.photo[$json.message.photo.length - 1].file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -416,
+        336
+      ],
+      "id": "a9639da6-cf2d-4eb7-9ca1-7436c41ee552",
+      "name": "Download File",
+      "webhookId": "b6108757-81d3-47c7-b57f-933e3cff284e",
+      "credentials": {
+        "telegramApi": {
+          "id": "CMPtSKVhJC5Gm9v9",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0",
+          "mode": "list",
+          "cachedResultName": "Law Firm Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Row ID",
+              "lookupValue": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -176,
+        288
+      ],
+      "id": "283ebe6d-02cc-46ac-923d-c6777246decd",
+      "name": "Get Client Name",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "0mYlmgopmknspeMH",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ac497945-b12c-4b0c-b6ea-ad5d73186606",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -64,
+        560
+      ],
+      "id": "4573a1b6-f0ac-422a-8879-1fed7e7cc60a",
+      "name": "Folder Exists?"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Get Client Name').item.json.Naam }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1ekKwBaNUVYx7ZqlxSZensFBpzrtcdLxY",
+          "mode": "list",
+          "cachedResultName": "Raja Law Firm Clients Documents",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1ekKwBaNUVYx7ZqlxSZensFBpzrtcdLxY"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        144,
+        656
+      ],
+      "id": "5704aa6c-919f-4655-ba42-43ba31600b8d",
+      "name": "Create Client Folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5arPSSmLbypplg3o",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Download File').item.binary.data.fileName }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        560,
+        656
+      ],
+      "id": "5ac72939-452c-44e8-9e94-1020fdb78874",
+      "name": "Upload File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5arPSSmLbypplg3o",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        400,
+        528
+      ],
+      "id": "72f453a3-12b0-400f-bba3-682201de4d9e",
+      "name": "Combine Folder and File"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Get Client Name').item.json.Naam }}",
+        "filter": {
+          "folderId": {
+            "mode": "list",
+            "value": "root",
+            "cachedResultName": "/ (Root folder)"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -272,
+        528
+      ],
+      "id": "f3600cd1-d9cb-4f4e-90f4-34b79855b497",
+      "name": "Search Client Folder",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5arPSSmLbypplg3o",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "✅ Aapki file mil gayi hai, shukriya!",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        528
+      ],
+      "id": "f162d5aa-8f73-46f8-837f-eab0176bd7ef",
+      "name": "Send a text message2",
+      "webhookId": "5861f0de-ef30-43be-a688-a47b4f5a9eec",
       "credentials": {
         "telegramApi": {
           "id": "CMPtSKVhJC5Gm9v9",
@@ -394,7 +681,114 @@
         ],
         [
           {
+            "node": "Check Document or Photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Document or Photo": {
+      "main": [
+        [
+          {
+            "node": "Download File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download File": {
+      "main": [
+        [
+          {
+            "node": "Get Client Name",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Combine Folder and File",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get Client Name": {
+      "main": [
+        [
+          {
+            "node": "Search Client Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Folder Exists?": {
+      "main": [
+        [
+          {
+            "node": "Combine Folder and File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Client Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Client Folder": {
+      "main": [
+        [
+          {
+            "node": "Combine Folder and File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Folder and File": {
+      "main": [
+        [
+          {
+            "node": "Upload File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Client Folder": {
+      "main": [
+        [
+          {
+            "node": "Folder Exists?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload File": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
             "type": "main",
             "index": 0
           }
@@ -408,7 +802,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "04041763-b5f2-40ac-94a8-70a7acc14a70",
+  "versionId": "7879ffb7-c281-4a30-9bae-ef0a2f1b7d96",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cecc21b4afde163c306314c82883b221c1a01ccb3593abc9d7425573b4018eb0"
