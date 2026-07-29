@@ -130,8 +130,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        416,
-        0
+        368,
+        96
       ],
       "id": "3b37791d-336d-44fd-94c5-9261e0568ebd",
       "name": "Switch"
@@ -147,7 +147,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        624,
+        832,
         -160
       ],
       "id": "d1453766-6a7f-46ac-bbc5-0f0820802fdb",
@@ -171,7 +171,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        640,
+        848,
         32
       ],
       "id": "095126e5-dfe1-41b3-93d1-54b899df4919",
@@ -195,7 +195,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        624,
+        880,
         224
       ],
       "id": "3b043f5e-b886-4d04-8143-86f37ea4651a",
@@ -207,6 +207,252 @@
           "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json['Row ID'] }}",
+        "text": "=✅ *Aapki Payment Confirm Ho Gayi Hai!*\n\nAapki consultation booking bhi confirm ho chuki hai. Raja Naveed Azam Sahab aapka case suniny ke liye tayyar hain.\n\n📅 Consultation Time:\n{{ $json['Preffered Time'] }}\n\n📌 Zaroori Hidayat:\nMeherbani kar ke consultation se pehle apne case se mutalliq tamam zaroori documents (jaise appointment letter, notice, ya koi bhi related kaghzaat) tayyar rakhein — is se case ko behtar tareeqe se samjhne aur sahi mashwara dene mein aasani hogi.\n\nShukriya!",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        496,
+        -240
+      ],
+      "id": "2d78fea9-3923-45d7-810e-513cadcb16e0",
+      "name": "Send a text message3",
+      "webhookId": "c133d0fa-6b7b-4f99-939e-2ee7ee559579",
+      "credentials": {
+        "telegramApi": {
+          "id": "CMPtSKVhJC5Gm9v9",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0",
+          "mode": "list",
+          "cachedResultName": "Law Firm Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Row ID": "={{ $('Get row(s) in sheet').item.json['Row ID'] }}",
+            "Naam": "={{ $('Get row(s) in sheet').item.json['Naam'] }}",
+            "WhatsApp": "={{ $('Get row(s) in sheet').item.json['WhatsApp'] }}",
+            "City": "={{ $('Get row(s) in sheet').item.json['City'] }}",
+            "Department": "={{ $('Get row(s) in sheet').item.json['Department'] }}",
+            "Masla": "={{ $('Get row(s) in sheet').item.json['Masla'] }}",
+            "Preffered Time": "={{ $('Get row(s) in sheet').item.json['Preffered Time'] }}",
+            "Date": "={{ $('Get row(s) in sheet').item.json['Date'] }}",
+            "First Contact Time": "={{ $('Get row(s) in sheet').item.json['First Contact Time'] }}",
+            "Stage": "={{ $('Get row(s) in sheet').item.json['Stage'] }}",
+            "Payment Status": "={{ $('Get row(s) in sheet').item.json['Payment Status'] }}",
+            "Confirmation Sent": "Yes"
+          },
+          "matchingColumns": [
+            "Row ID"
+          ],
+          "schema": [
+            {
+              "id": "Row ID",
+              "displayName": "Row ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Naam",
+              "displayName": "Naam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "WhatsApp",
+              "displayName": "WhatsApp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Department",
+              "displayName": "Department",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Masla",
+              "displayName": "Masla",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Preffered Time",
+              "displayName": "Preffered Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "First Contact Time",
+              "displayName": "First Contact Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Payment Status",
+              "displayName": "Payment Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Confirmation Sent",
+              "displayName": "Confirmation Sent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        656,
+        -288
+      ],
+      "id": "e83977f8-dddc-4128-9854-8a154c788670",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "0mYlmgopmknspeMH",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4c936633-a452-4d0d-8c49-c98719fa12ac",
+              "leftValue": "={{ $json.Stage }}",
+              "rightValue": "payment verified",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "10887200-f914-4008-b0b2-583dc9e5d372",
+              "leftValue": "={{ $json['Confirmation Sent'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        368,
+        -96
+      ],
+      "id": "d449ccab-7ac8-4e43-bbef-17a297d5c41a",
+      "name": "Check Payment Verified"
     }
   ],
   "pinData": {},
@@ -225,6 +471,11 @@
     "Get row(s) in sheet": {
       "main": [
         [
+          {
+            "node": "Check Payment Verified",
+            "type": "main",
+            "index": 0
+          },
           {
             "node": "Switch",
             "type": "main",
@@ -257,6 +508,28 @@
           }
         ]
       ]
+    },
+    "Send a text message3": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Payment Verified": {
+      "main": [
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -265,7 +538,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "4401121d-e24f-4d07-9dc9-64335c2c11ef",
+  "versionId": "ed74df75-07ba-4510-b47d-12b60bfcc4f7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cecc21b4afde163c306314c82883b221c1a01ccb3593abc9d7425573b4018eb0"
