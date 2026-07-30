@@ -1,0 +1,849 @@
+{
+  "name": "RajaLawFirm WhatsApp Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.messages[0].text.body }}",
+        "options": {
+          "systemMessage": "Tum \"Raja Naveed Azam\" ke law firm ke liye ek professional legal intake assistant ho. Raja Naveed Azam Service aur Labour Laws ke expert hain, aur unki target audience Pakistani government employees hai.\n\nCONVERSATION STYLE:\n- Conversation ko naturally chalao, jaise ek insaan baat karta hai — customer se seedha \"apna naam, city, department aur masla batayein\" jaisa form-style sawal mat karo.\n- BOHAT ZAROORI RULE: Har reply mein SIRF EK sawal poocho, kabhi bhi ek sath do ya teen sawal mat poocho. Pehle sirf ek cheez poochho, customer ka jawab aane do, phir agla sawal poochho. Jaldi mat karo, natural rakho.\n- Sequence: pehle unka masla samjho aur thodi hamdardi dikhao → phir department poocho → phir city poocho → phir naam poocho → phir phone/WhatsApp number poocho → phir consultation ki taraf badho.\n- Reply mein 3-5 lines tak ki gunjaish hai — bilkul chhota/robotic mat lagna, na hi lambi lecture do.\n- Customer jis language/script mein baat kare, usi mein reply do — Urdu script, Roman Urdu, ya English, jo bhi customer use kare.\n- Tone hamesha professional, garmjoshi wala (warm), aur bharosemand rakho — jaise ek senior lawyer ka trusted assistant baat kar raha ho, salesperson jaisa mehsoos na ho.\n\nCONSULTATION AUR LOCATION:\n- Jab customer ne apna masla wazeh kar diya ho, tab naturally batao ke is tarah ke cases mein proper consultation (Rs. 3000) lena faida mand hota hai, kyunke Raja Sahab khud case dekh kar sahi rasta bata sakte hain.\n- Consultation ko sirf ek dafa naturally mention karo — baar baar zor mat do. Agar customer hesitant lage, unka sawal pehle sun lo, dobara zabardasti mat karo.\n- Jab customer apna city bataye: agar Multan ya Multan ke qareebi elaqon se ho, to unhe batao ke woh Raja Sahab ke Multan office aa kar direct one-to-one meeting bhi kar sakte hain agar unhe zyada mahsoos ho. Agar door ke shehr se ho (Lahore, Karachi, Islamabad, waghera), to unhe batao ke unki consultation online (call/video) hogi. Ye naturally batana hai, form jaisa mat lagna.\n- Kabhi khud legal advice mat do — sirf consultation book karne mein madad karo.\n- Agar customer koi urgent/sensitive masla bataye (jaise termination, suspension), unhe bolo ke jitni jaldi consultation lein utna behtar hoga — natural tareeqe se, dara kar nahi.\n\nPAYMENT:\n- Jab customer consultation ke liye raazi ho jaye, unse preferred time poochho aur booking confirm karo. Booking confirm karne ke foran baad, unhe payment ki taraf naturally guide karo — batao ke consultation confirm karne ke liye Rs. 3000 advance bhejna hota hai, aur ye bank details do:\n\nAccount Title: RAJA NAVEED AZAM\nBank: Meezan Bank - CHUNGI NO 1 MULTAN BR\nAccount Number: 05200110340448\nIBAN: PK55MEZN0005200110340448\n\n- Jab customer ko payment/bank details bhejo, unhe ye bhi zaroor batao: \"Payment karne ke baad, screenshot ke saath ek chhota sa text bhi bhej dein jaise 'payment done' ya 'paisay bhej diye hain', taake hum aapki booking confirm kar sakein.\" Ye sab naturally, professionally batana hai.\n- Agar customer koi image/photo/screenshot bheje jise tum samajh nahi sakte, unhe politely bolo: \"Payment ka screenshot mil gaya hoga, lekin abhi ke liye barah-e-karam likh kar confirm kar dein ke 'payment bhej di hai', taake main record update kar sakoon.\"\n\nGOOGLE SHEETS DATA SAVING RULES (BOHAT ZAROORI):\n- Jaise hi customer apna masla bata de, TURANT ek row Google Sheets mein bana do (jo fields abhi nahi mili unhe khali chhor do), aur \"Stage\" ko \"Inquiry Only\" likho.\n- Jaise hi naam, city, department mil jayein, isi row ko update karo (same Row ID use karo) aur \"Stage\" ko \"Details Collected\" karo.\n- Jab customer consultation ke liye raazi ho aur time confirm ho, \"Stage\" ko \"Consultation Booked\" karo aur \"Payment Status\" ko \"Pending\" karo.\n- Jab customer bole payment kar di hai, \"Stage\" ko \"Customer Claims Paid\" aur \"Payment Status\" ko \"Customer Claims Paid - Verify Karein\" karo.\n- Kabhi bhi khud se \"Verified Paid\" mat likhna — ye sirf Raja Sahab manually confirm karenge apne bank statement dekh kar.\n- IMPORTANT: Jab bhi row update karo (kisi bhi wajah se), us row ki SAARI fields dobara bhejo — Naam, City, Department, Masla, Preferred Time, Phone Number, First Contact Time, Stage, Payment Status — apni memory se, jo tumne conversation mein collect ki hain. Kabhi koi field khali/blank mat chhorna agar wo pehle mil chuki hai, warna purana data mit jayega. Row ID poori conversation mein same rakho, kabhi mat badalna jab tak bilkul naya customer/conversation na ho.\n\nIMPORTANT SAFETY RULE: Agar customer apna record delete/remove/hatane ke liye kahe, tum khud kabhi bhi Google Sheet ka data delete, \"[REMOVED]\" ya corrupt nahi karoge. Iski jagah customer ko politely jawab do: \"Aapki request note kar li gayi hai, humari team is par jald rabta karegi.\" Aur kuch mat karo — sirf reply do, koi tool call mat karo is maqsad ke liye."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        128,
+        48
+      ],
+      "id": "7a7b2e6f-8bd2-46c0-8d28-8380ebc5a4cc",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        112,
+        304
+      ],
+      "id": "b1a9e1a0-edf2-4eef-9a68-bced239a1f81",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('WhatsApp Trigger').item.json.contacts[0].wa_id }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        272,
+        304
+      ],
+      "id": "e25d3eab-7d61-4dfe-8808-091696becda2",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0",
+          "mode": "list",
+          "cachedResultName": "Law Firm Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Naam": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Naam', ``, 'string') }}",
+            "City": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('City', ``, 'string') }}",
+            "Department": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Department', ``, 'string') }}",
+            "Masla": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Masla', ``, 'string') }}",
+            "Preffered Time": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Preffered_Time', ``, 'string') }}",
+            "Date": "={{ $now.format('yyyy-MM-dd') }}",
+            "WhatsApp": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('WhatsApp', ``, 'string') }}",
+            "First Contact Time": "={{ $('WhatsApp Trigger').first().json.messages[0].timestamp ? new Date($('WhatsApp Trigger').first().json.messages[0].timestamp * 1000).toLocaleString('en-PK', {timeZone: 'Asia/Karachi'}) : '' }}",
+            "Payment Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Payment_Status', ``, 'string') }}",
+            "Row ID": "={{ $('WhatsApp Trigger').first().json.contacts[0].wa_id }}",
+            "Stage": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Stage', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Row ID"
+          ],
+          "schema": [
+            {
+              "id": "Row ID",
+              "displayName": "Row ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Naam",
+              "displayName": "Naam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "WhatsApp",
+              "displayName": "WhatsApp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Department",
+              "displayName": "Department",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Masla",
+              "displayName": "Masla",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Preffered Time",
+              "displayName": "Preffered Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "First Contact Time",
+              "displayName": "First Contact Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Stage",
+              "displayName": "Stage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Payment Status",
+              "displayName": "Payment Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Confirmation Sent",
+              "displayName": "Confirmation Sent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        288
+      ],
+      "id": "041cc237-816e-41e0-90e6-7f50cf6f7530",
+      "name": "Append or update row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "0mYlmgopmknspeMH",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "76032ddc-46eb-41fb-a736-cc28e6ef5ab2",
+              "leftValue": "={{ $json.messages[0].type }}",
+              "rightValue": "text",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -256,
+        32
+      ],
+      "id": "aeea475d-61f6-4afd-af38-15814b4d7a00",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "4fec2331-3aca-437e-90ed-0edcf7fbd3de",
+              "leftValue": "={{ $json.messages[0].type }}",
+              "rightValue": "image",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "a8a4e2e8-58fc-4659-8e73-474f8ffe1b7a",
+              "leftValue": "={{ $json.messages[0].type }}",
+              "rightValue": "document",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -784,
+        304
+      ],
+      "id": "5710b0d0-1eed-4756-98bb-5942915c306d",
+      "name": "Check Document or Photo"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0",
+          "mode": "list",
+          "cachedResultName": "Law Firm Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1kDlOI5igcmH-RP1ijgrNOcJY5eUbWhJ61ZzxSQc24q0/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Row ID",
+              "lookupValue": "={{ $('WhatsApp Trigger').item.json.contacts[0].wa_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        256
+      ],
+      "id": "7ada0c24-ea3b-45db-be0c-6e53367e7891",
+      "name": "Get Client Name",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "0mYlmgopmknspeMH",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ac497945-b12c-4b0c-b6ea-ad5d73186606",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -64,
+        560
+      ],
+      "id": "8f491e71-ed63-4b96-8658-a20702b20c40",
+      "name": "Folder Exists?"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Get Client Name').item.json.Naam }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1ekKwBaNUVYx7ZqlxSZensFBpzrtcdLxY",
+          "mode": "list",
+          "cachedResultName": "Raja Law Firm Clients Documents",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1ekKwBaNUVYx7ZqlxSZensFBpzrtcdLxY"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        144,
+        656
+      ],
+      "id": "efb18c6f-8245-4845-8eff-20d3e34b377c",
+      "name": "Create Client Folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5arPSSmLbypplg3o",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Download Media File').item.binary.data.fileName }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Folder Exists?').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        560,
+        656
+      ],
+      "id": "7d7e6a35-5067-4187-a75b-88d9e0a00c89",
+      "name": "Upload File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5arPSSmLbypplg3o",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        400,
+        528
+      ],
+      "id": "2a3e5197-1525-4705-a82f-dbfc0faee156",
+      "name": "Combine Folder and File"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Get Client Name').item.json.Naam }}",
+        "filter": {
+          "folderId": {
+            "mode": "list",
+            "value": "root",
+            "cachedResultName": "/ (Root folder)"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -272,
+        528
+      ],
+      "id": "4f39ad31-ba17-4b95-a754-248047abec5c",
+      "name": "Search Client Folder",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "5arPSSmLbypplg3o",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        48
+      ],
+      "id": "60da3db0-4c84-4d7d-ac07-5e4be8bed636",
+      "name": "WhatsApp Trigger",
+      "webhookId": "0a653c97-d518-4ec9-9bf1-93c25c46b297",
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "5xuAO1P5zzqNDW0H",
+          "name": "WhatsApp OAuth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "1230620856801831",
+        "recipientPhoneNumber": "={{ $('WhatsApp Trigger').item.json.contacts[0].wa_id }}",
+        "textBody": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        48
+      ],
+      "id": "0e10a794-d331-494f-be6e-187e070c6a37",
+      "name": "Send message",
+      "webhookId": "7a65f413-495f-4000-a295-30cbb4bac96f",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "aIDn3HJXYmM9R4Vh",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "1230620856801831",
+        "recipientPhoneNumber": "={{ $json.contacts[0].wa_id }}",
+        "textBody": "aap text bhaijein",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        -624,
+        496
+      ],
+      "id": "dd51109c-4879-4a9e-9b1b-192bb8a87d39",
+      "name": "Send message1",
+      "webhookId": "08b6ee55-96ab-4e8b-9de0-b51684f653de",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "aIDn3HJXYmM9R4Vh",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.facebook.com/v21.0/{{ $json.messages[0].image.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -576,
+        304
+      ],
+      "id": "077fed96-9eb8-499b-814e-3fd4d6cc5f64",
+      "name": "Get Media URL",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "44qd8xtpD19ZL7vh",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -384,
+        304
+      ],
+      "id": "097d5eab-86b1-4719-9c32-674ebb09cd6e",
+      "name": "Download Media File",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "44qd8xtpD19ZL7vh",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "1230620856801831",
+        "recipientPhoneNumber": "={{ $('WhatsApp Trigger').item.json.contacts[0].wa_id }}",
+        "textBody": "Apki File Mil Gayi Hai, Shukria.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        704,
+        528
+      ],
+      "id": "4dd5b8a0-8665-4eae-9166-99edfacdae82",
+      "name": "Send message2",
+      "webhookId": "a9f86e95-578c-4d55-8edb-2d9fa91cf0ed",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "aIDn3HJXYmM9R4Vh",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Document or Photo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Document or Photo": {
+      "main": [
+        [
+          {
+            "node": "Get Media URL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Client Name": {
+      "main": [
+        [
+          {
+            "node": "Search Client Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Folder Exists?": {
+      "main": [
+        [
+          {
+            "node": "Combine Folder and File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Client Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Client Folder": {
+      "main": [
+        [
+          {
+            "node": "Combine Folder and File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Folder and File": {
+      "main": [
+        [
+          {
+            "node": "Upload File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Client Folder": {
+      "main": [
+        [
+          {
+            "node": "Folder Exists?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload File": {
+      "main": [
+        [
+          {
+            "node": "Send message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Media URL": {
+      "main": [
+        [
+          {
+            "node": "Download Media File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Media File": {
+      "main": [
+        [
+          {
+            "node": "Get Client Name",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Combine Folder and File",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "c0f3773d-9820-4d4a-b749-8918d159fad9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cecc21b4afde163c306314c82883b221c1a01ccb3593abc9d7425573b4018eb0"
+  },
+  "nodeGroups": [],
+  "id": "fq5n1KdlieQdzlZM",
+  "tags": []
+}
